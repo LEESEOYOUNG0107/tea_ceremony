@@ -2,7 +2,7 @@ import {
   PageWrap,
   HeroCard, HeroContent, HeroText, HeroBadge, HeroTitle, HeroDesc, WindowImg,
   CharacterArea, CharImg,
-  InfoCard, CardSectionTitle, CardSectionTitle2, InfoCardInner, InfoLeafImg, InfoCardText,
+  InfoCard, CardSectionTitle, CardSectionTitle2, InfoCardInner, InfoLeafImg, InfoCardText, InfoteaImg,
   PrepSection, ToolsGrid, ToolItem, ToolIconWrap, ToolImg,
   ToolName, ToolSubName,
   CTAButton,
@@ -17,7 +17,7 @@ import leaf from '../../assets/img/leaf.png';
 import charImg from '../../assets/img/charImg.png';
 import shiny from '../../assets/img/shiny.png';
 import heart from '../../assets/img/heart.png';
-// import leaves from '../../assets/img/leaves.png';
+import leaves from '../../assets/img/leaves.png';
 import tea from '../../assets/img/tea.png';
 import teaLeaves from '../../assets/img/teaLeaves.png';
 import kettle from '../../assets/img/kettle.png';
@@ -64,11 +64,14 @@ export default function TeaCeremonyIntro() {
       <InfoCard>
         <CardSectionTitle>다도란?</CardSectionTitle>
         <InfoCardInner>
-          <InfoLeafImg src={tea} alt="잎" />
+          <InfoLeafImg src={leaves} alt="잎" />
+        
           <InfoCardText>
             차를 끓이고, 마시고, 대접하는 전 과정을 통해 예절을 익히고 몸과 마음을 수양하는 전통 문화입니다. <br />
             단순한 음용을 넘어 차를 매개로 자연과의 조화, 타인에 대한 배려, 그리고 정신적인 깨달음을 얻는 데 목적이 있습니다
           </InfoCardText>
+        
+          <InfoteaImg src={tea} alt="차" />
         </InfoCardInner>
       </InfoCard>
 

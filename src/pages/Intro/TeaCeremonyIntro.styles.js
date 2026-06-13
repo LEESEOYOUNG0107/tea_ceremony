@@ -85,18 +85,16 @@ export const InfoCard = styled.div`
   border: 1px solid #FAF4EB;
   padding: 20px 22px;
   background: #FDF9F3;
-  // box-shadow: 0 2px 12px rgba(141, 110, 99, 0.08);
 `;
 
 export const CardSectionTitle = styled.div`
+  margin-bottom: -12px;
   margin-left: 40px;
   font-size: 20px;
   font-weight: 700;
   color: #5C4A32;
-  margin-bottom: 5px;
   display: flex;
   align-items: center;
-  gap: 8px;
 `;
 
 export const CardSectionTitle2 = styled.div`
@@ -113,13 +111,14 @@ export const CardSectionTitle2 = styled.div`
 export const InfoCardInner = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 12px;
 `;
 
 export const InfoLeafImg = styled.img`
   width: 30px;
   height: 30px;
   flex-shrink: 0;
+  margin-top: 16px;
+  margin-right: 10px;
 `;
 
 export const InfoCardText = styled.p`
@@ -129,8 +128,8 @@ export const InfoCardText = styled.p`
   word-break: keep-all;
 `;
 
-export const ChickImg = styled.img` //병아리 이미지
-  width: 106px;
+export const InfoteaImg = styled.img`
+  width: 120px;
 `;
 
 /* ── 준비물 섹션 ── */
