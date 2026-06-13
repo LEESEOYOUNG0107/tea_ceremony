@@ -99,11 +99,6 @@ export default function TeaCeremonyIntro() {
       <CTAButton href="#">
         다도 시작하기 🪴
       </CTAButton>
-
-
-
-
-
     </PageWrap>
   );
 }

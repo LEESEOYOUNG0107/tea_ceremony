@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // import TeaEtiquette from "./pages/TeaEtiquette.jsx";
 // import TeaLibrary from "./pages/TeaLibrary.jsx";
-import TeaCeramoneyIntro from "./pages/Intro/TeaCeremonyIntro";
+import TeaCeremonyIntro from "./pages/Intro/TeaCeremonyIntro";
 
 export default function AppRouter() {
   const [hash, setHash] = useState(() => window.location.hash || "#library");
@@ -18,8 +18,8 @@ export default function AppRouter() {
     // return <TeaEtiquette />;
   }
 
-  if(hash === "#TeaCeramoneyIntro"){
-    return <TeaCeramoneyIntro />;
+  if(hash === "#TeaCeremonyIntro"){
+    return <TeaCeremonyIntro />;
   }
 
   // return <TeaLibrary />;
