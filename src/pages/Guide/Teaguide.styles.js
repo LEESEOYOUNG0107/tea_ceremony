@@ -5,14 +5,34 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
+/* ── Page Layout ── */
 export const PageWrapper = styled.div`
-  background: #f5f0e8;
   min-height: 100vh;
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 20px 18px 32px;
-  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  width: 100%;
+  padding: 36px 48px 48px;
+  font-family: "MaruBuri", "Segoe UI", "Pretendard", system-ui, sans-serif;
   box-sizing: border-box;
+`;
+
+export const ContentGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+`;
+
+export const LeftCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const RightCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 /* ── Header ── */
@@ -20,32 +40,35 @@ export const Header = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 20px;
-  gap: 12px;
+  margin-bottom: 28px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 16px;
 `;
 
 export const HeaderLeft = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 `;
 
 export const TeapotIcon = styled.img`
-  width: 44px;
-  height: 44px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 `;
 
 export const HeaderTitle = styled.h1`
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 800;
   color: #2d2d2d;
-  margin: 0 0 2px;
+  margin: 0 0 4px;
   letter-spacing: -0.5px;
 `;
 
 export const HeaderSubtitle = styled.p`
-  font-size: 12px;
+  font-size: 14px;
   color: #888;
   margin: 0;
 `;
@@ -54,13 +77,13 @@ export const HeaderSubtitle = styled.p`
 export const TeaSelector = styled.button`
   background: #fff;
   border: 1.5px solid #e0dbd0;
-  border-radius: 12px;
-  padding: 8px 12px;
+  border-radius: 14px;
+  padding: 10px 16px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  min-width: 110px;
-  gap: 2px;
+  min-width: 140px;
+  gap: 4px;
   transition: border-color 0.2s;
 
   &:hover {
@@ -69,14 +92,14 @@ export const TeaSelector = styled.button`
 `;
 
 export const TeaIcon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
   border-radius: 4px;
 `;
 
 export const TeaName = styled.span`
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #2d2d2d;
 `;
@@ -85,35 +108,35 @@ export const ChevronIcon = styled.span`
   font-size: 14px;
   color: #4a7c59;
   transition: transform 0.2s;
-  transform: ${(p) => (p.open ? "rotate(180deg)" : "rotate(0deg)")};
+  transform: ${(p) => (p.$open ? "rotate(180deg)" : "rotate(0deg)")};
   display: inline-block;
 `;
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   right: 0;
   background: #fff;
   border: 1.5px solid #e0dbd0;
-  border-radius: 12px;
-  min-width: 140px;
+  border-radius: 14px;
+  min-width: 160px;
   z-index: 100;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
   overflow: hidden;
   animation: ${fadeIn} 0.18s ease;
 `;
 
 export const DropdownItem = styled.button`
   width: 100%;
-  background: ${(p) => (p.active ? "#f0f7f2" : "transparent")};
+  background: ${(p) => (p.$active ? "#f0f7f2" : "transparent")};
   border: none;
-  padding: 10px 14px;
+  padding: 11px 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 14px;
-  font-weight: ${(p) => (p.active ? 700 : 500)};
-  color: ${(p) => (p.active ? "#4a7c59" : "#2d2d2d")};
+  font-weight: ${(p) => (p.$active ? 700 : 500)};
+  color: ${(p) => (p.$active ? "#4a7c59" : "#2d2d2d")};
   cursor: pointer;
   text-align: left;
 
@@ -123,16 +146,17 @@ export const DropdownItem = styled.button`
 `;
 
 export const DropdownImg = styled.img`
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
 `;
 
-/* ── Step Navigation ── */
+/* ── Step Nav ── */
 export const StepNav = styled.div`
-  margin-bottom: 18px;
+  margin-top: 3%;
+  margin-left: 30%;
+  margin-bottom: 3%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
 `;
@@ -140,9 +164,8 @@ export const StepNav = styled.div`
 export const StepList = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 0;
   min-width: max-content;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
   padding-top: 4px;
 `;
 
@@ -150,56 +173,48 @@ export const StepItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   cursor: pointer;
 `;
 
 export const StepDot = styled.div`
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${(p) => p.done ? "#4a7c59" : p.active ? "#4a7c59" : "#fff"};
-  border: 2px solid ${(p) => p.done || p.active ? "#4a7c59" : "#d0ccc4"};
+  background: ${(p) => p.$done || p.$active ? "#6A793F" : "#F3ECDC"};
+  border: 1px solid ${(p) => p.$done || p.$active ? "#4a7c59" : "#d2ccbc"};
   transition: all 0.2s;
   flex-shrink: 0;
-  flex-direction: column;
 `;
 
 export const StepDotInner = styled.span`
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  color: ${(p) => p.done || p.active ? "#fff" : "#aaa"};
+  color: ${(p) => p.$done || p.$active ? "#fff" : "#504b48"};
 `;
 
 export const StepConnector = styled.div`
-  width: 28px;
-  height: 2px;
-  background: ${(p) => p.done ? "#4a7c59" : "#d0ccc4"};
-  margin: 16px 2px 0;
-  transition: background 0.3s;
+  border-top: 3px dotted ${(p) => p.$done ? "#4a7c59" : "#d2ccbc"};
+  width: 48px;
+  margin: 19px 15px 0;
   flex-shrink: 0;
 `;
 
 export const StepLabel = styled.span`
-  position: absolute;
-  top: 38px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  color: ${(p) => p.active ? "#4a7c59" : "#999"};
-  font-weight: ${(p) => p.active ? 700 : 400};
+  font-size: 12px;
+  color: ${(p) => p.$active ? "#6A793F" : "#504b48"};
+  font-weight: ${(p) => p.$active ? 800 : 500};
+  margin-top: 8px;
   white-space: nowrap;
 `;
 
 /* ── Video ── */
 export const VideoSection = styled.div`
-  margin-bottom: 16px;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
 `;
 
 export const VideoWrapper = styled.div`
@@ -222,20 +237,20 @@ export const PlayBtn = styled.button`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: rgba(255,255,255,0.92);
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   color: #2d2d2d;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-  transition: transform 0.15s;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
   padding-left: 4px;
+  transition: transform 0.15s;
 
   &:hover {
     transform: translate(-50%, -50%) scale(1.08);
@@ -244,56 +259,55 @@ export const PlayBtn = styled.button`
 
 export const VideoMeta = styled.div`
   position: absolute;
-  bottom: 8px;
-  left: 12px;
+  bottom: 10px;
+  left: 14px;
   font-size: 12px;
   color: #fff;
   background: rgba(0,0,0,0.45);
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 6px;
 `;
 
 /* ── Step Content ── */
 export const StepContent = styled.div`
   background: #fff;
-  border-radius: 16px;
-  padding: 18px 16px;
-  margin-bottom: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 20px;
+  padding: 28px 28px 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
   animation: ${fadeIn} 0.25s ease;
 `;
 
 export const StepBadge = styled.span`
   display: inline-block;
-  background: #4a7c59;
+  background: #6A793F;
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   border-radius: 20px;
-  padding: 3px 10px;
-  margin-bottom: 8px;
+  padding: 4px 12px;
+  margin-bottom: 12px;
 `;
 
 export const StepTitle = styled.h2`
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 800;
   color: #2d2d2d;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   letter-spacing: -0.3px;
 `;
 
 export const StepDesc = styled.p`
-  font-size: 14px;
+  font-size: 15px;
   color: #555;
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
 `;
 
 export const StepIllustration = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   object-fit: contain;
-  margin-left: 12px;
+  margin-left: 16px;
   flex-shrink: 0;
 `;
 
@@ -301,21 +315,22 @@ export const StepIllustration = styled.img`
 export const TipBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: #f5f9f6;
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin-top: 14px;
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-top: 20px;
   border: 1px solid #dff0e6;
 `;
 
-export const TipLeaf = styled.span`
-  font-size: 20px;
-  flex-shrink: 0;
+export const TipLeaf = styled.img`
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 `;
 
 export const TipText = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   color: #444;
   margin: 0;
   line-height: 1.5;
@@ -324,15 +339,14 @@ export const TipText = styled.p`
 /* ── Nav Row ── */
 export const NavRow = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
 `;
 
 const btnBase = css`
   flex: 1;
-  padding: 14px 0;
-  border-radius: 14px;
-  font-size: 15px;
+  padding: 16px 0;
+  border-radius: 16px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   border: none;
@@ -346,22 +360,22 @@ const btnBase = css`
 
 export const PrevBtn = styled.button`
   ${btnBase}
-  background: #fff;
+  background: #F3ECDC;
   color: #555;
-  border: 1.5px solid #ddd;
+  border: 1.5px solid #F1E6D5;
 
   &:not(:disabled):hover {
-    background: #f0f0ee;
+    background: rgb(229, 229, 208);
   }
 `;
 
 export const NextBtn = styled.button`
   ${btnBase}
-  background: #3a6147;
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(58,97,71,0.28);
+  background: #6A793F;
+  color: #FBF7ED;
+  box-shadow: 0 4px 16px rgba(106, 121, 63, 0.28);
 
   &:not(:disabled):hover {
-    background: #2e4f3a;
+    background: #788947;
   }
 `;
