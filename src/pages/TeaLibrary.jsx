@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import SiteHeader from "../components/SiteHeader.jsx";
 import chrysanthemumTea from "../assets/ChrysanthemumTea.png";
 import decorativeCharacter from "../assets/cr.png";
 import gingerTea from "../assets/GingerTea.png";
@@ -119,7 +119,8 @@ const TEAS = [
   },
 ];
 
-export default function TeaLibrary({ activePage = "library" }) {
+export default function TeaLibrary() {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("전체");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -162,9 +163,12 @@ export default function TeaLibrary({ activePage = "library" }) {
     setIsFilterOpen(false);
   };
 
+  const handleCardClick = (id) => {
+    navigate(`/guide?tea=${id}`);
+  }
+
   return (
     <Page>
-      <SiteHeader activePage={activePage} />
 
       <Shell>
         <Hero>
@@ -215,7 +219,7 @@ export default function TeaLibrary({ activePage = "library" }) {
 
         <TeaGrid>
           {visibleTeas.map((tea) => (
-            <TeaCard key={tea.id} $tone={tea.cardTone} $accent={tea.accent}>
+            <TeaCard key={tea.id} $tone={tea.cardTone} $accent={tea.accent} onClick={() => handleCardClick(tea.id)} >
               <CardText>
                 <TeaName>{tea.name}</TeaName>
                 <TeaEnglish>{tea.englishName}</TeaEnglish>

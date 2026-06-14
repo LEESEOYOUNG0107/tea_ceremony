@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   PageWrap,
   HeroCard, HeroContent, HeroText, HeroBadge, HeroTitle, HeroDesc, WindowImg,
@@ -9,21 +10,21 @@ import {
   BottomFlower, BottomFlower2, BottomFlower4
 } from './TeaCeremonyIntro.styles';
 
-import windowImg from '../../assets/img/window.png';
-import flower1 from '../../assets/img/flower.png';
-import flower2 from '../../assets/img/flower2.png';
-import flower4 from '../../assets/img/flower4.png';
+import windowImg from '../../assets/window.png';
+import flower1 from '../../assets/flower.png';
+import flower2 from '../../assets/flower2.png';
+import flower4 from '../../assets/flower4.png';
 import leaf from '../../assets/img/leaf.png';
-import charImg from '../../assets/img/charImg.png';
-import shiny from '../../assets/img/shiny.png';
-import heart from '../../assets/img/heart.png';
-import leaves from '../../assets/img/leaves.png';
+import charImg from '../../assets/charImg.png';
+import shiny from '../../assets/shiny.png';
+import heart from '../../assets/heart.png';
+import leaves from '../../assets/leaves.png';
 import tea from '../../assets/img/tea.png';
-import teaLeaves from '../../assets/img/teaLeaves.png';
-import kettle from '../../assets/img/kettle.png';
-import teaSet from '../../assets/img/teaset.png';
-import towl from '../../assets/img/towl.png';
-import timer from '../../assets/img/timer.png';
+import teaLeaves from '../../assets/teaLeaves.png';
+import kettle from '../../assets/kettle.png';
+import teaSet from '../../assets/teaset.png';
+import towl from '../../assets//towl.png';
+import timer from '../../assets/timer.png';
 
 const TOOLS = [
   { img: teaLeaves, name: '찻잎', sub: null, hasTimer: false },
@@ -34,6 +35,11 @@ const TOOLS = [
 ];
 
 export default function TeaCeremonyIntro() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const selectedTea = location.state?.selectedTea || "nokcha";
+
   return (
     <PageWrap>
 
@@ -65,12 +71,12 @@ export default function TeaCeremonyIntro() {
         <CardSectionTitle>다도란?</CardSectionTitle>
         <InfoCardInner>
           <InfoLeafImg src={leaves} alt="잎" />
-        
+
           <InfoCardText>
             차를 끓이고, 마시고, 대접하는 전 과정을 통해 예절을 익히고 몸과 마음을 수양하는 전통 문화입니다. <br />
             단순한 음용을 넘어 차를 매개로 자연과의 조화, 타인에 대한 배려, 그리고 정신적인 깨달음을 얻는 데 목적이 있습니다
           </InfoCardText>
-        
+
           <InfoteaImg src={tea} alt="차" />
         </InfoCardInner>
       </InfoCard>
@@ -96,7 +102,11 @@ export default function TeaCeremonyIntro() {
       </PrepSection>
 
       {/* ── CTA 버튼 ── */}
-      <CTAButton href="#">
+      <CTAButton onClick={() => 
+        navigate("/teaGuide", {
+          state: {selectedTea,},
+        })
+      }>
         다도 시작하기 🪴
       </CTAButton>
     </PageWrap>
