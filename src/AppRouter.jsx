@@ -1,30 +1,55 @@
 import { useEffect, useState } from "react";
 
-// import TeaEtiquette from "./pages/TeaEtiquette.jsx";
-// import TeaLibrary from "./pages/TeaLibrary.jsx";
 import TeaCeremonyIntro from "./pages/Intro/TeaCeremonyIntro";
 import Teaguide from "./pages/Guide/Teaguide";
+import TeaCulture from "./pages/TeaCulture.jsx";
+import TeaEtiquette from "./pages/TeaEtiquette.jsx";
+import TeaLibrary from "./pages/TeaLibrary.jsx";
 
 export default function AppRouter() {
-  const [hash, setHash] = useState(() => window.location.hash || "#library");
+  const [path, setPath] = useState(() => getCurrentPath());
 
   useEffect(() => {
-    const handleHashChange = () => setHash(window.location.hash || "#library");
+    const handlePageChange = () => setPath(getCurrentPath());
 
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handlePageChange);
+    window.addEventListener("hashchange", handlePageChange);
+    return () => {
+      window.removeEventListener("popstate", handlePageChange);
+      window.removeEventListener("hashchange", handlePageChange);
+    };
   }, []);
 
-  if (hash === "#etiquette") {
-    // return <TeaEtiquette />;
-  }
+  const activePage = path.split("/").filter(Boolean)[0] || "home";
 
-  if(hash === "#TeaCeremonyIntro"){
+  if (activePage === "home" || activePage === "intro" || activePage === "TeaCeremonyIntro") {
     return <TeaCeremonyIntro />;
   }
-  if(hash === "#Teaguide"){
+  if(activePage === "#Teaguide"){
     return <Teaguide />;
   }
 
-  // return <TeaLibrary />;
+  if (activePage === "etiquette") {
+    return <TeaEtiquette />;
+  }
+
+  if (activePage === "culture") {
+    return <TeaCulture />;
+  }
+
+  return <TeaLibrary activePage={activePage === "library" ? "library" : activePage} />;
+}
+
+function getCurrentPath() {
+  const hashPath = window.location.hash.replace(/^#/, "");
+
+  if (hashPath === "TeaCeremonyIntro") {
+    return "/TeaCeremonyIntro";
+  }
+
+  if (hashPath === "etiquette" || hashPath === "library" || hashPath === "culture") {
+    return `/${hashPath}`;
+  }
+
+  return window.location.pathname || "/";
 }
