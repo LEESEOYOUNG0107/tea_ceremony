@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import TeaCeremonyIntro from "./pages/Intro/TeaCeremonyIntro";
+import Teaguide from "./pages/Guide/Teaguide";
 import TeaCulture from "./pages/TeaCulture.jsx";
 import TeaEtiquette from "./pages/TeaEtiquette.jsx";
 import TeaLibrary from "./pages/TeaLibrary.jsx";
@@ -23,6 +24,9 @@ export default function AppRouter() {
 
   if (activePage === "home" || activePage === "intro" || activePage === "TeaCeremonyIntro") {
     return <TeaCeremonyIntro />;
+  }
+  if(activePage === "#Teaguide"){
+    return <Teaguide />;
   }
 
   if (activePage === "etiquette") {
