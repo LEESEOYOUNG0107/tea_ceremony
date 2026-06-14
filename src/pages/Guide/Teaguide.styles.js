@@ -7,10 +7,6 @@ const fadeIn = keyframes`
 
 /* ── Page Layout ── */
 export const PageWrapper = styled.div`
-  min-height: 100vh;
-  width: 100%;
-  padding: 36px 48px 48px;
-  font-family: "MaruBuri", "Segoe UI", "Pretendard", system-ui, sans-serif;
   box-sizing: border-box;
 `;
 
@@ -40,6 +36,7 @@ export const Header = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 40px;
   margin-bottom: 28px;
   max-width: 1280px;
   margin-left: auto;
@@ -60,7 +57,7 @@ export const TeapotIcon = styled.img`
 `;
 
 export const HeaderTitle = styled.h1`
-  font-size: 28px;
+  font-size: 45px;
   font-weight: 800;
   color: #2d2d2d;
   margin: 0 0 4px;
@@ -68,7 +65,7 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const HeaderSubtitle = styled.p`
-  font-size: 14px;
+  font-size: 20px;
   color: #888;
   margin: 0;
 `;
@@ -338,6 +335,8 @@ export const TipText = styled.p`
 export const NavRow = styled.div`
   display: flex;
   gap: 14px;
+  margin-top: 20px;
+  margin-bottom: 100px
 `;
 
 const btnBase = css`

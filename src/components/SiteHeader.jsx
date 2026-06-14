@@ -1,37 +1,31 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom"; 
 
 import leafDecoration from "../assets/leaf.png";
 
 const MENU_ITEMS = [
-  { href: "/", label: "홈", key: "home" },
-  { href: "/library", label: "차 도감", key: "library" },
-  { href: "/guide", label: "다도 가이드", key: "guide" },
-  { href: "/etiquette", label: "다도 예절", key: "etiquette" },
-  { href: "/culture", label: "한국 다도 문화", key: "culture" },
-  { href: "/community", label: "커뮤니티", key: "community" },
+  { href: "/", label: "홈" },
+  { href: "/library", label: "차 도감" },
+  { href: "/guide", label: "다도 가이드" },
+  { href: "/etiquette", label: "다도 예절" },
+  { href: "/culture", label: "한국 다도 문화" },
 ];
 
-export default function SiteHeader({ activePage = "library" }) {
-  const movePage = (event, href) => {
-    event.preventDefault();
-    window.history.pushState({}, "", href);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  };
-
+export default function SiteHeader() {
   return (
     <Header>
-      <Brand href="/library" onClick={(event) => movePage(event, "/library")}>
-        <BrandText>다도락</BrandText>
+      {/* 💡 a 태그 대신 NavLink 사용 */}
+      <Brand as={NavLink} to="/library">
+        <BrandText>다도락</BrandText>\
         <BrandLeaf src={leafDecoration} alt="" aria-hidden="true" />
       </Brand>
 
       <Menu aria-label="서비스 메뉴">
         {MENU_ITEMS.map((item) => (
           <MenuLink
-            key={item.key}
-            href={item.href}
-            $active={activePage === item.key}
-            onClick={(event) => movePage(event, item.href)}
+            key={item.href}
+            as={NavLink} // 🌟 styled-component가 NavLink 역할을 하도록 바꿉니다.
+            to={item.href}
           >
             {item.label}
           </MenuLink>
@@ -40,6 +34,8 @@ export default function SiteHeader({ activePage = "library" }) {
     </Header>
   );
 }
+
+// ── 아래는 기존 스타일 구조를 유지하되 스타일 부여 방식만 약간 조율합니다 ──
 
 const Header = styled.header`
   height: 62px;
@@ -76,25 +72,33 @@ const BrandLeaf = styled.img`
 const Menu = styled.nav`
   display: flex;
   justify-content: center;
-  gap: 42px;
+  gap: 34px;
 `;
 
 const MenuLink = styled.a`
-  position: relative;
-  color: ${({ $active }) => ($active ? "#3c5123" : "#5e563f")};
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
+  color: #76634e;
   text-decoration: none;
-  padding: 20px 0 18px;
+  position: relative;
+  transition: color 0.25s ease;
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 8px;
-    height: 3px;
-    border-radius: 999px;
-    background: ${({ $active }) => ($active ? "#7d9a5a" : "transparent")};
+  &:hover {
+    color: #3c5123;
+  }
+
+  &.active {
+    color: #3c5123;
+    font-weight: 700;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #869968;
+    }
   }
 `;

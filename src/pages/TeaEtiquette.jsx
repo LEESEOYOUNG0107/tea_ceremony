@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import SiteHeader from "../components/SiteHeader.jsx";
 import quoteCharacter from "../assets/charactor3.png";
 import etiquetteBow from "../assets/etiquette-bow.png";
 import etiquetteCup from "../assets/etiquette-cup.png";
@@ -70,7 +69,6 @@ const ETIQUETTE_STEPS = [
 export default function TeaEtiquette() {
   return (
     <Page>
-      <SiteHeader activePage="etiquette" />
 
       <Hero>
         <HeroImage

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import SiteHeader from "../components/SiteHeader.jsx";
 import bannerCharacterImage from "../assets/charactor2.png";
 import characterImage from "../assets/charactor.png";
 import cultureHeroImage from "../assets/etiquette-hero2.png";
@@ -44,7 +43,6 @@ const HISTORY_ITEMS = [
 export default function TeaCulture() {
   return (
     <Page>
-      <SiteHeader activePage="culture" />
 
       <Hero>
         <HeroImage

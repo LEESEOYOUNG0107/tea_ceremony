@@ -31,7 +31,7 @@ export const HeroText = styled.div`
   flex-direction: column;
   flex: 1;
   margin-top: 10%;
-`;  
+`;
 
 export const HeroBadge = styled.div`
   display: inline-block;
@@ -62,7 +62,7 @@ export const WindowImg = styled.img`
   display: inline-block;
   width: 720px;
   margin-right: -250px;
-`;  
+`;
 
 /* ── 캐릭터 일러스트 영역 ── */
 export const CharacterArea = styled.div`
@@ -189,7 +189,7 @@ export const ToolSubName = styled.p`
 `;
 
 /* ── CTA 버튼 ── */
-export const CTAButton = styled.a`
+export const CTAButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,6 +205,8 @@ export const CTAButton = styled.a`
   margin-left: 30%;
   margin-top: 70px;
   margin-bottom: 50px;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     background: #7a8c51c5;
