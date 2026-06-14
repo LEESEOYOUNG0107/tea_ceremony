@@ -270,7 +270,7 @@ export const VideoMeta = styled.div`
 
 /* ── Step Content ── */
 export const StepContent = styled.div`
-  background: #fff;
+  background: #FCFAF4;
   border-radius: 20px;
   padding: 28px 28px 24px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.05);
@@ -304,10 +304,9 @@ export const StepDesc = styled.p`
 `;
 
 export const StepIllustration = styled.img`
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  margin-left: 16px;
   flex-shrink: 0;
 `;
 
@@ -316,11 +315,10 @@ export const TipBox = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f5f9f6;
+  background: #FBF7ED;
   border-radius: 14px;
   padding: 16px 18px;
   margin-top: 20px;
-  border: 1px solid #dff0e6;
 `;
 
 export const TipLeaf = styled.img`
