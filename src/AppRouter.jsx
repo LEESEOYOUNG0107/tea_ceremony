@@ -1,20 +1,29 @@
 import { useEffect, useState } from "react";
 
+import TeaCeremonyIntro from "./pages/Intro/TeaCeremonyIntro";
 import TeaCulture from "./pages/TeaCulture.jsx";
 import TeaEtiquette from "./pages/TeaEtiquette.jsx";
 import TeaLibrary from "./pages/TeaLibrary.jsx";
 
 export default function AppRouter() {
-  const [path, setPath] = useState(() => window.location.pathname || "/library");
+  const [path, setPath] = useState(() => getCurrentPath());
 
   useEffect(() => {
-    const handlePageChange = () => setPath(window.location.pathname || "/library");
+    const handlePageChange = () => setPath(getCurrentPath());
 
     window.addEventListener("popstate", handlePageChange);
-    return () => window.removeEventListener("popstate", handlePageChange);
+    window.addEventListener("hashchange", handlePageChange);
+    return () => {
+      window.removeEventListener("popstate", handlePageChange);
+      window.removeEventListener("hashchange", handlePageChange);
+    };
   }, []);
 
   const activePage = path.split("/").filter(Boolean)[0] || "home";
+
+  if (activePage === "home" || activePage === "intro" || activePage === "TeaCeremonyIntro") {
+    return <TeaCeremonyIntro />;
+  }
 
   if (activePage === "etiquette") {
     return <TeaEtiquette />;
@@ -24,5 +33,19 @@ export default function AppRouter() {
     return <TeaCulture />;
   }
 
-  return <TeaLibrary activePage={activePage === "home" ? "home" : activePage} />;
+  return <TeaLibrary activePage={activePage === "library" ? "library" : activePage} />;
+}
+
+function getCurrentPath() {
+  const hashPath = window.location.hash.replace(/^#/, "");
+
+  if (hashPath === "TeaCeremonyIntro") {
+    return "/TeaCeremonyIntro";
+  }
+
+  if (hashPath === "etiquette" || hashPath === "library" || hashPath === "culture") {
+    return `/${hashPath}`;
+  }
+
+  return window.location.pathname || "/";
 }
