@@ -3,13 +3,14 @@
 React의 `useState`와 `useEffect`를 활용하여 전통차 정보와 다도 문화를 소개하는 웹 서비스입니다.
 https://github.com/user-attachments/assets/05db3fe1-e9ef-46e8-a74d-752c6ceacd86
 
+
 ## 📖 프로젝트 소개
 
 다도락은 한국 전통차의 종류와 효능, 차를 우리는 방법, 다도 예절을 쉽게 배울 수 있는 웹 서비스입니다.
 
 Programming 수행평가 조건에 맞춰 React Hook인 `useState`와 `useEffect`를 활용하여 화면 상태 관리와 데이터 표시 기능을 구현했습니다.
 
----
+
 
 ## ✨ 주요 기능
 
@@ -32,7 +33,7 @@ Programming 수행평가 조건에 맞춰 React Hook인 `useState`와 `useEffect
 - 전통 다도 예절 소개
 - 차를 마시고 대접하는 방법 안내
 
----
+
 
 ## ⚛️ React Hook 활용
 
@@ -46,7 +47,7 @@ Programming 수행평가 조건에 맞춰 React Hook인 `useState`와 `useEffect
 - 타이머가 실행될 때 1초마다 시간 감소
 - 시간이 0초가 되면 타이머 자동 종료
 
----
+
 
 ## 🍵 수록된 전통차
 
