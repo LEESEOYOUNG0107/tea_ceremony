@@ -3,8 +3,6 @@
 React의 `useState`와 `useEffect`를 활용하여 전통차 정보와 다도 문화를 소개하는 웹 서비스입니다.
 https://github.com/user-attachments/assets/05db3fe1-e9ef-46e8-a74d-752c6ceacd86
 
----
-
 ## 📖 프로젝트 소개
 
 다도락은 한국 전통차의 종류와 효능, 차를 우리는 방법, 다도 예절을 쉽게 배울 수 있는 웹 서비스입니다.
