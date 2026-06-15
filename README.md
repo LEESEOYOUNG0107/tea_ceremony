@@ -1,6 +1,7 @@
 # 🍵 다도락 (茶道樂)
 
 React의 `useState`와 `useEffect`를 활용하여 전통차 정보와 다도 문화를 소개하는 웹 서비스입니다.
+https://github.com/user-attachments/assets/05db3fe1-e9ef-46e8-a74d-752c6ceacd86
 
 ---
 
