@@ -15,7 +15,9 @@ import quinceTea from "../assets/QuinceTea.png";
 import teaSetImage from "../assets/tea.png";
 import yuzaTea from "../assets/YuzaTea.png";
 
-const CATEGORIES = ["전체", "잎차", "꽃차", "과일차", "건강차"];
+const FAVORITES_FILTER = "즐겨찾기";
+const LIKED_TEAS_STORAGE_KEY = "tea-library-liked-teas";
+const CATEGORIES = ["전체", FAVORITES_FILTER, "잎차", "꽃차", "과일차", "건강차"];
 
 const TEAS = [
   {
@@ -123,7 +125,14 @@ export default function TeaLibrary({ activePage = "library" }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("전체");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [likedTeas, setLikedTeas] = useState({});
+  const [likedTeas, setLikedTeas] = useState(() => {
+    try {
+      const storedLikes = window.localStorage.getItem(LIKED_TEAS_STORAGE_KEY);
+      return storedLikes ? JSON.parse(storedLikes) : {};
+    } catch {
+      return {};
+    }
+  });
   const [visibleTeas, setVisibleTeas] = useState(TEAS);
 
   useEffect(() => {
@@ -131,7 +140,9 @@ export default function TeaLibrary({ activePage = "library" }) {
 
     const nextTeas = TEAS.filter((tea) => {
       const matchesFilter =
-        selectedFilter === "전체" || tea.category === selectedFilter;
+        selectedFilter === "전체" ||
+        tea.category === selectedFilter ||
+        (selectedFilter === FAVORITES_FILTER && likedTeas[tea.id]);
       const matchesSearch =
         tea.name.includes(normalizedSearch) ||
         tea.englishName.toLowerCase().includes(normalizedSearch) ||
@@ -148,9 +159,21 @@ export default function TeaLibrary({ activePage = "library" }) {
     }, 0);
 
     return () => window.clearTimeout(updateTimer);
-  }, [searchTerm, selectedFilter]);
+  }, [likedTeas, searchTerm, selectedFilter]);
 
-  const toggleLike = (teaId) => {
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(
+        LIKED_TEAS_STORAGE_KEY,
+        JSON.stringify(likedTeas),
+      );
+    } catch {
+      // localStorage may be unavailable in private or restricted browser modes.
+    }
+  }, [likedTeas]);
+
+  const toggleLike = (event, teaId) => {
+    event.stopPropagation();
     setLikedTeas((current) => ({
       ...current,
       [teaId]: !current[teaId],
@@ -223,9 +246,9 @@ export default function TeaLibrary({ activePage = "library" }) {
               </CardText>
               <HeartButton
                 type="button"
-                aria-label={`${tea.name} 좋아요`}
+                aria-label={`${tea.name} 즐겨찾기 ${likedTeas[tea.id] ? "해제" : "추가"}`}
                 $liked={Boolean(likedTeas[tea.id])}
-                onClick={() => toggleLike(tea.id)}
+                onClick={(event) => toggleLike(event, tea.id)}
               >
                 {likedTeas[tea.id] ? "♥" : "♡"}
               </HeartButton>
