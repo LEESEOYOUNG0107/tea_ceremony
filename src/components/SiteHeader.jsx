@@ -6,7 +6,6 @@ import leafDecoration from "../assets/leaf.png";
 const MENU_ITEMS = [
   { href: "/", label: "홈" },
   { href: "/library", label: "차 도감" },
-  { href: "/guide", label: "다도 가이드" },
   { href: "/etiquette", label: "다도 예절" },
   { href: "/culture", label: "한국 다도 문화" },
 ];
@@ -34,8 +33,6 @@ export default function SiteHeader() {
     </Header>
   );
 }
-
-// ── 아래는 기존 스타일 구조를 유지하되 스타일 부여 방식만 약간 조율합니다 ──
 
 const Header = styled.header`
   height: 62px;

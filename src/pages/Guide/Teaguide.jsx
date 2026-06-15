@@ -11,7 +11,6 @@ import {
   HeaderTitle,
   HeaderSubtitle,
   TeaSelector,
-  // TeaDropdownBtn,
   TeaIcon,
   TeaName,
   ChevronIcon,
@@ -51,6 +50,7 @@ import yujaImg from "../../assets/yuzu.png";
 import gughwaImg from "../../assets/chrysanthemum.png";
 import mogwaImg from "../../assets/quience.png";
 import plumImg from "../../assets/plum.png";
+import persimmonImg from "../../assets/persimmon.png";
 
 const VIDEO_ID = "DlvkxN3olnk";
 
@@ -67,6 +67,7 @@ const TEA_LIST = [
   { id: "jujube", name: "대추차", img: dechuImg, temp: "약불 달이기", time: "30분 ~ 1시간", tempNote: "약불에 푹 달여요" },
   { id: "plum", name: "매실차", img: plumImg, temp: "80°C ~ 90°C", time: "청을 물에 희석", tempNote: "온차 또는 냉차로!" },
   { id: "yuzu", name: "유자차", img: yujaImg, temp: "80°C ~ 90°C", time: "청을 물에 희석", tempNote: "정수기 온수 정도" },
+  { id: "persimmon", name: "감잎차", img: persimmonImg, temp: "70°C ~ 80°C", time: "1분 30초 ~ 2분", tempNote: "한 김 식힌 물" },
 ];
 
 const TEA_STEPS = {
@@ -125,6 +126,13 @@ const TEA_STEPS = {
     { num: 3, label: "냉침 숙성", title: "12~24시간 냉침", desc: "냉장고에 넣고 12시간~하루 동안 천천히 냉침(우려내기)해주세요.", tip: "오래 냉침할수록 오미자의 5가지 맛이 균형 있게 우러나요.", illustration: boilTea, videoId: "P3ZKWZ2SXJA", duration: "1:30" },
     { num: 4, label: "거르기", title: "건더기 거르기", desc: "냉침한 오미자 원액을 체로 걸러 맑은 원액만 남겨주세요.", tip: "원액을 그대로 마시면 너무 강하니 물이나 꿀로 취향껏 희석하세요.", illustration: boilTea, videoId: "B4iHxzxkODE", duration: "0:50" },
     { num: 5, label: "음미하기", title: "음미하기", desc: "희석한 오미자차를 따뜻하게 데우거나 그대로 시원하게 음미하세요.", tip: "오미자차는 피로 회복, 간 보호, 면역력 향상에 효과가 있어요.", illustration: boilTea, videoId: "zEdofJsJpJg", duration: "1:10" },
+  ],
+  persimmon: [
+    { num: 1, label: "다구 데우기", title: "다구 데우기", desc: " 끓는 물을 다관과 찻잔에 부어 먼저 따뜻하게 데운 뒤 그 물은 버립니다.", tip: "수돗물보다는 정수된 물이나 생수를 사용해야 감잎 특유의 은은한 단맛과 부드러운 향을 온전히 느낄 수 있습니다.", illustration: boilTea, videoId: "Z_hbWiWE_tk", duration: "0:45" },
+    { num: 2, label: "물 식히기", title: "물 식히기", desc: "끓인 물을 숙우에 부어 70~80°C가 되도록 잠시 식힙니다.", tip: "물을 숙우에 부은 뒤, 손으로 숙우 바닥이나 옆면을 감싸 쥐었을 때 '따뜻하지만 기분 좋게 쥘 수 있는 정도'가 되면 감잎차를 우릴 수 있는 가장 알맞은 온도입니다.", illustration: boilTea, videoId: "fxDz9QCNJp0", duration: "1:02" },
+    { num: 3, label: "찻잎 넣기", title: "찻잎 넣기", desc: "데워진 다관에 준비한 감잎을 넣습니다.", tip: "저울이 없다면, 1인용 다관 기준으로 바닥이 살짝 깔릴 정도만 넣으시면 됩니다. 감잎은 물에 불어나면 부피가 커지므로 너무 많이 넣지 않도록 주의합니다.", illustration: boilTea, videoId: "P3ZKWZ2SXJA", duration: "1:30" },
+    { num: 4, label: "우리기", title: "우리기", desc: "식힌 물을 다관에 붓고 1분 30초에서 2분간 우려냅니다.", tip: "물을 다관에 부을 때는 물줄기를 높이 들어 콸콸 붓지 마세요. 낙차가 크면 물에 산소가 과하게 들어가 감잎의 비타민 C가 쉽게 산화되고 향이 날아갑니다. 다관 기벽(안쪽 벽)을 따라 물이 미끄러지듯 부드럽고 낮게 채워주는 것이 좋습니다.", illustration: boilTea, videoId: "B4iHxzxkODE", duration: "0:50" },
+    { num: 5, label: "음미하기", title: "음미하기", desc: "차의 색과 맛이 고르게 섞이도록 찻잔마다 조금씩 번갈아 가며 따릅니다. 마지막 한 방울까지 모두 짜내야 다음 우림 때 쓴맛이 나지 않습니다.", tip: "여러 번 우려 마시기: 감잎차는 2번째, 3번째 우려낼 때 비타민 C 성분이 가장 많이 나옵니다. 2번째 우릴 때는 시간을 30초~1분 정도 더 늘려서 우려주세요.", illustration: boilTea, videoId: "zEdofJsJpJg", duration: "1:10" },
   ],
 };
 
