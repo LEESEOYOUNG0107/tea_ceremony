@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   PageWrap,
   HeroCard, HeroContent, HeroText, HeroBadge, HeroTitle, HeroDesc, WindowImg,
@@ -35,10 +35,7 @@ const TOOLS = [
 ];
 
 export default function TeaCeremonyIntro() {
-  const location = useLocation();
   const navigate = useNavigate();
-
-  const selectedTea = location.state?.selectedTea || "nokcha";
 
   return (
     <PageWrap>
@@ -102,13 +99,7 @@ export default function TeaCeremonyIntro() {
       </PrepSection>
 
       {/* ── CTA 버튼 ── */}
-      <CTAButton onClick={() => 
-        navigate("/teaGuide", {
-          state: {selectedTea,},
-        })
-      }>
-        다도 시작하기 🪴
-      </CTAButton>
+      <CTAButton onClick={() => navigate("/library") }> 다도 시작하기 </CTAButton>
     </PageWrap>
   );
 }
